@@ -44,7 +44,17 @@ RUN apt-get install -y \
 WORKDIR /app
 RUN npm i puppeteer
 
-# COPY spec/index.js spec/
-# RUN node spec/index.js
+# Japanese font
+RUN mkdir /noto
+ADD https://noto-website.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip /noto
+WORKDIR /noto
+RUN unzip NotoSansCJKjp-hinted.zip && \
+    mkdir -p /usr/share/fonts/noto && \
+    cp *.otf /usr/share/fonts/noto && \
+    chmod 644 -R /usr/share/fonts/noto/ && \
+    /usr/bin/fc-cache -fv
+RUN rm -rf /noto
+
+WORKDIR /app
 
 ENTRYPOINT sh
