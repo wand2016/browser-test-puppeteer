@@ -5,4 +5,10 @@ services:
       php:7.3-apache
     volumes:
       - ./public:/var/www/html
-    
+  front-test:
+    build:
+      context: .
+      dockerfile: ./docker/front-test/Dockerfile
+    tty: true
+    volumes:
+      - ./spec:/app/spec
