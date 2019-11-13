@@ -11,4 +11,7 @@ services:
       dockerfile: ./docker/front-test/Dockerfile
     tty: true
     volumes:
-      - ./spec:/app/spec
+      - bucket:/app/node_modules
+      - .:/app
+volumes:
+  bucket:

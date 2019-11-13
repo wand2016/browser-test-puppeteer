@@ -1,3 +1,2 @@
 <?php
-echo 'あいうえお';
-echo phpinfo();
+echo 'スクリーンショットによるスナップショットテスト' . PHP_EOL;

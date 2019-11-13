@@ -2,7 +2,6 @@ FROM node:latest
 
 RUN apt-get -y update
 RUN apt-get install -y \
-    gconf-service \
     libasound2 \
     libatk1.0-0 \
     libc6 \
@@ -41,10 +40,7 @@ RUN apt-get install -y \
     xdg-utils \
     wget
 
-WORKDIR /app
-RUN npm i puppeteer
-
-# Japanese font
+# japanese font
 RUN mkdir /noto
 ADD https://noto-website.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip /noto
 WORKDIR /noto
@@ -56,5 +52,7 @@ RUN unzip NotoSansCJKjp-hinted.zip && \
 RUN rm -rf /noto
 
 WORKDIR /app
+RUN npm init -y
+RUN npm i puppeteer jest jest-image-snapshot
 
 ENTRYPOINT sh
