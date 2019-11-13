@@ -1,0 +1,7 @@
+version: "3"
+services:
+  web:
+    ports:
+      - 10080:80
+      
+    
